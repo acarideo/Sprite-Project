@@ -5,7 +5,7 @@ module mario_run1_16x32_rom(
     output reg [7:0] GRN,
     output reg [7:0] BLU);
 always @ (*)
-    case ({y_idx,x_idx})
+    case ({x_idx,y_idx})
 0:
 begin
 RED=8'hf8;

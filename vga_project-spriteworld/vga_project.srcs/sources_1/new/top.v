@@ -123,7 +123,9 @@ always @ (posedge clk)
         begin          
             length <= 16;
             height <= 32;
-            vx <= 2;       
+            vx <= 2;   
+            left <= 0;
+            top <= 240;    
         end
         else if (H_count_value == 0 && V_count_value == 0)
         begin   
@@ -133,15 +135,6 @@ always @ (posedge clk)
     end
 end
 
-always @ (posedge clk)
-    begin
-        if(reset)
-        begin                   
-            top <= 240;
-            left <= 0;
-        end
-    end
- 
  wire [3:0] mario_stand_red;
  wire [3:0] mario_stand_grn;
  wire [3:0] mario_stand_blu;
