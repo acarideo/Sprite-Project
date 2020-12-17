@@ -1,0 +1,20 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../vga_project.srcs/sources_1/ip/clk_wiz_0" \
+"../../../../vga_project.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0_clk_wiz.v" \
+"../../../../vga_project.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.v" \
+"../../../../vga_project.srcs/sources_1/new/horizontal_counter.v" \
+"../../../../vga_project.srcs/sources_1/new/mario_stand_16x32.v" \
+"../../../../vga_project.srcs/sources_1/new/mario_walk1_16x32.v" \
+"../../../../vga_project.srcs/sources_1/new/mario_walk2_16x32.v" \
+"../../../../vga_project.srcs/sources_1/new/sprite.v" \
+"../../../../vga_project.srcs/sources_1/new/sprite1.v" \
+"../../../../vga_project.srcs/sources_1/new/sprite2.v" \
+"../../../../vga_project.srcs/sources_1/new/top.v" \
+"../../../../vga_project.srcs/sources_1/new/vertical_counter.v" \
+"../../../../vga_project.srcs/sim_1/new/vga_tb.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
