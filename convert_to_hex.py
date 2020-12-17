@@ -1,11 +1,9 @@
+import matplotlib.pyplot as plt
 import numpy as np
-from PIL import Image
 import sys
 
-#Open image
-mario = Image.open("mario_run2_R.jpg")
-#Convert image to numpy array
-mario = np.asarray(Image.open("mario_run2_R.jpg"))
+#Convert image to array
+mario = plt.imread('mario_run2_R.png')
 #Copy array to edit
 mario1 = np.copy(mario)
 
@@ -16,7 +14,21 @@ r = np.zeros((32,16), dtype = int)
 g = np.zeros((32,16), dtype = int)
 b = np.zeros((32,16), dtype = int)
 
-#Populate arrays with RGB values in hex
+#For PNG only, this makes it so that the opaque pixels
+#in the RGBA colorspace are black
+#Otherwise, the floats are converted to int
+for i in range(32):
+    for z in range(16):
+        if mario1[i,z,3] == 0:
+            mario1[i,z,0] = 0
+            mario1[i,z,1] = 0
+            mario1[i,z,2] = 0
+        else:
+            mario1[i,z,0] = mario1[i,z,0]*255
+            mario1[i,z,1] = mario1[i,z,1]*255
+            mario1[i,z,2] = mario1[i,z,2]*255
+        
+#Populate arrays with RGB values
 for i in range(32):
     for z in range(16):
         r[i,z] = mario1[i,z,0]
@@ -40,6 +52,5 @@ with open('Mario_Run2_RGB.txt', 'w') as f:
             print("BLU=8'h" + str(hex(b[i,z])[2:]) + ";")
             print("end")
             count = count+1
-
 #Return stdout mode to reference
 sys.stdout = original_stdout
